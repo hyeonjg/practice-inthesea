@@ -1,0 +1,166 @@
+@font-face {
+    font-family: 'NEXON Lv2 Gothic';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+		@font-face {
+    font-family: 'SBAggroB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+		html{
+			font-family: 'NEXON Lv2 Gothic';
+			font-size:1.5rem; line-height: 1.4;
+			word-break: keep-all;
+			scroll-behavior: smooth;
+			background: #0315ff;
+			width: 100%;
+			height: 100%;
+			background-size: 400% 400%;
+			animation: gradient 15s alternate-reverse ease infinite;
+			overflow: hidden;
+		}
+
+		@keyframes gradient {
+    0% {
+     background-position: 50% 50%;
+    }
+    100% {
+     background-position: -50% -50%;
+    }
+}
+
+		body,h1,h2,h3,h4,h5,p,ul{margin: 0; padding: 0;}
+		h1,h2,h3{line-height: 1.5;}
+		h1{font-size: 2rem;}
+
+		body{width: 100%;
+			height: 100%;
+			overflow: hidden;
+			position: relative;
+			}
+
+		p{font-family: 'SBAggroB';
+			color: white; font-size: 7rem;
+			text-shadow: 0px 0px 15px lightgray;}
+
+		h1{color: black; font-size: 2rem; line-height: 1.1;
+			display: inline;
+			box-shadow: inset 0 -70px 0 white;}
+
+		h2{color: white; font-size: 1.2rem;}
+
+		h3{color: white; font-size: 0.7rem;}
+		.says{color: black; box-shadow: inset 0 -30px 0 #f5f5f5;
+			display: block; z-index: 5;}
+
+		img{width: 200px; position: absolute;
+			filter: drop-shadow(0px 0px 5px);}
+
+		.wave{width: 450px; height:450px; background: white;
+			border-radius: 47%;
+			animation: wave-rotate 7s infinite linear;
+			position: absolute; top: -380px;
+			box-shadow: 0px 0px 20px white;}
+
+		@keyframes wave-rotate{
+			100%{transform: rotate(360deg);}
+		}
+
+		.wavebox{overflow: hidden; height: 100px; width:100vw;
+			z-index: 10;
+			position: absolute;
+		}
+
+		#wave1{left: -10vw;}
+		#wave2{left: 5vw;}
+		#wave3{left: 10vw;}
+		#wave4{left: 20vw;}
+		#wave5{left: 35vw;}
+		#wave6{left: 40vw;}
+		#wave7{left: 50vw;}
+		#wave8{left: 65vw;}
+		#wave9{left: 70vw;}
+		#wave10{left: 80vw;}
+		#wave11{left: 95vw;}
+		
+
+		.wrap{margin: auto;}
+		.t-center{text-align: center}
+
+		#blind{z-index: 10; width:100px; height: 40px;
+			border-radius: 30px; background-color: white;
+			box-shadow: none; border: none;
+			margin: 15px; font-size: 0.6rem;
+			font-family: 'NEXON Lv2 Gothic';}
+
+		#textBox{position: absolute; left: 50%; top: 50%;
+			transform: translate(-50%, -50%); z-index: 10;}
+
+		#textIn{Height: 30px; width: 300px;
+			font-size: 1rem;
+			z-index: 9; display: block;}
+
+		#textBT{border:0; outline: 0; padding: 10px; 
+			border-radius: 50%;
+			background-color: white;
+			font-size: 0.6rem;
+			cursor: pointer;
+			display: none;}
+		#textBT:hover{background-color: black; color: white;
+			z-index: 9;}
+
+		#credit, #creditTXT{position: absolute;
+			left:50%; top: 95%;
+			width:800px; height: 100px;
+			transform:translate(-50%, 0); z-index: 10;
+			font-size: 0.6rem; color: white;
+			text-align: center;
+			}
+		#credit:hover{color:yellow;}	
+		#creditTXT{top: 73%; opacity: 0;}
+		.showCredit{animation: showC 5s}
+		@keyframes showC{
+			0%{opacity: 1;}
+			100%{opacity: 0;}
+		}
+
+		@keyframes waterUP{
+			0%{top: 1000px; opacity: 100%}
+			30%{opacity: 100%;}
+			40%{opacity: 0%;}
+			100%{top: -800px;}
+		}
+		.waterText{
+			display: inline-block; position: absolute; top: 500px;
+			animation: waterUP 10s;
+			z-index: 15;
+			animation-fill-mode: forwards;
+		}
+
+		@keyframes bubbleGone{
+			0%{opacity: 100%; width:100px; height:100px;}
+			100%{opacity: 0%; width:150px; height:150px;}
+		}
+
+		.bubble{border-radius: 50%; border: white 1px solid;
+			width: 500px; height: 500px;
+			position: absolute; top: 500px;
+			animation: waterUP 20s;
+			animation-fill-mode: forwards;
+		}
+
+		.bubble-mini{border-radius: 50%; border: white 1px solid;
+			width: 100px; height: 100px;
+			position: absolute; top: 500px;
+			animation: bubbleGone 3s;
+			animation-fill-mode: forwards;
+			z-index: 5;}
+
+		#cursor{border-radius: 50%; border: white 1px solid;
+			width: 50px; height: 50px;
+			position: absolute; transform: translate(-50%, -50%);}

@@ -3,118 +3,32 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="bbicon.gif"/>
+	<link rel='stylesheet' href='style.css'/>
+
 	<title>보글보글</title>
-	<style>
-
-		@font-face {
-    font-family: 'NEXON Lv2 Gothic';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-		@font-face {
-    font-family: 'SBAggroB';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-		html{
-			font-family: 'NEXON Lv2 Gothic';
-			font-size:1.5rem; line-height: 1.4;
-			word-break: keep-all;
-			scroll-behavior: smooth;
-		}
-
-		body,h1,h2,h3,h4,h5,p,ul{margin: 0; padding: 0;}
-		h1,h2,h3{line-height: 1.5;}
-		h1{font-size: 2rem;}
-
-		body{background-color: #0035c4;
-			overflow: hidden;}
-
-		p{font-family: 'SBAggroB';
-			color: white; font-size: 7rem;}
-
-		h1{color: black; font-size: 2rem; line-height: 1.1;
-			display: inline;
-			box-shadow: inset 0 -70px 0 white;}
-
-		h2{color: white; font-size: 1.2rem;}
-
-		h3{color: white; font-size: 0.7rem;}
-		.says{color: black; box-shadow: inset 0 -30px 0 #f5f5f5;
-			display: block;}
-		
-
-		.wrap{margin: auto;}
-		.t-center{text-align: center}
-
-		#blind{z-index: 10; width:100px; height: 40px;
-			border-radius: 30px; background-color: white;
-			box-shadow: none; border: none;
-			margin: 15px; font-size: 0.6rem;
-			font-family: 'NEXON Lv2 Gothic';}
-
-		#textBox{position: absolute; left: 50%; top: 50%;
-			transform: translate(-50%, -50%); z-index: 10;}
-
-		#textIn{Height: 30px; width: 300px;
-			font-size: 1rem;
-			z-index: 9; display: block;}
-
-		#textBT{border:0; outline: 0; padding: 10px; 
-			border-radius: 50%;
-			background-color: white;
-			font-size: 0.6rem;
-			cursor: pointer;
-			display: none;}
-		#textBT:hover{background-color: black; color: white;
-			z-index: 9;}
-
-		@keyframes waterUP{
-			0%{top: 1000px; opacity: 100%}
-			30%{opacity: 100%;}
-			40%{opacity: 0%;}
-			100%{top: -800px;}
-		}
-		.waterText{
-			display: inline-block; position: absolute; top: 500px;
-			animation: waterUP 10s;
-			animation-fill-mode: forwards;
-		}
-
-		@keyframes bubbleGone{
-			0%{opacity: 100%; width:100px; height:100px;}
-			100%{opacity: 0%; width:150px; height:150px;}
-		}
-
-		.bubble{border-radius: 50%; border: white 1px solid;
-			width: 500px; height: 500px;
-			position: absolute; top: 500px;
-			animation: waterUP 20s;
-			animation-fill-mode: forwards;}
-
-		.bubble-mini{border-radius: 50%; border: white 1px solid;
-			width: 100px; height: 100px;
-			position: absolute; top: 500px;
-			animation: bubbleGone 3s;
-			animation-fill-mode: forwards;}
-
-		#cursor{border-radius: 50%; border: white 1px solid;
-			width: 50px; height: 50px;
-			position: absolute; transform: translate(-50%, -50%);}
-
-	</style>
 </head>
 <body>
 
-	<!-- <div id='cursor'></div> -->
+	<div class='wavebox'>
+		<div class='wave' id='wave1'></div>
+		<div class='wave' id='wave2'></div>
+		<div class='wave' id='wave3'></div>
+		<div class='wave' id='wave4'></div>
+		<div class='wave' id='wave5'></div>
+		<div class='wave' id='wave6'></div>
+		<div class='wave' id='wave7'></div>
+		<div class='wave' id='wave8'></div>
+		<div class='wave' id='wave9'></div>
+		<div class='wave' id='wave10'></div>
+		<div class='wave' id='wave11'></div>
+	</div>
+
 
 	<div class='wrap t-center' id='yongWang'>
 		<h3 id='say'></h3>
 	</div>
+
 
 	<div class='wrap t-center' id='textBox'>
 		<h1>용왕님 귀는<br>당나귀 귀!</h1>
@@ -129,178 +43,25 @@
 	</div>
 	</div>
 
+	<div id='credit'>credit</div>
+	<div id='creditTXT'>
+	made by: hyeonjg (@h_jun342)<br>
+	sound: MATRIXXX_ (Creative Commons 0)<br>
+	photo from Unsplash<br>
+		red fish: Claudio Guglieri<br>
+		turtle: Wexor Tmg<br>
+		yellow fish: ZQ Lee<br>
+		lime fish: Gábor Szűts<br>
+		grey fish: Cofish Aquarium<br>
+	</div>
+
+	<audio id='WS' src='waterdrop.wav'>
+
 	
 	
-	<script type="text/javascript">
-
-		const textIn = document.getElementById('textIn');
-		const yongWang = document.getElementById('yongWang');
-		const say = document.getElementById('say');
-		const yongWangList = ["아~ 안 들린다!", "안 보인다 안 보여", "소곤소곤", "스트레스야 없어져라!", "보글보글~"];
-		const blindBT = document.getElementById('blind');
-		blindBTON = false;
-
-		//keydown 으로 했을 때 오류 발생. keyup으로 수
-		textIn.addEventListener('keyup', function(event){
-			if(event.key === 'Enter'){
-				textOut();
-				yongWangSay();
-			}
-		})
-		
-		function textOut(){
-			var userText = textIn.value;
-			if (userText.trim() === "") return;
-
-			console.log(userText);
-
-			const newtxt = document.createElement('p');
-			newtxt.className = 'waterText';
-			const newtxtChild = document.createTextNode(userText);
-			newtxt.appendChild(newtxtChild);
-			
-			//생성되지 않은 객체의 offsetWidth 측정불가. 화면외 생성 후 Y지정
-			document.body.appendChild(newtxt);
-			randomX(newtxt);
-			waveAni(newtxt);
-
-			textIn.value = '';
-			textIn.focus();
-		}
-
-		function randomX(obj){
-			var leftPx = Math.random()*
-			(window.innerWidth - obj.offsetWidth);
-			obj.style.left = Math.round(leftPx)+'px';
-		}
-
-		function yongWangSay(){
-			const newSay = document.createElement('h3');
-			newSay.className = 'says';
-			let nowSay = document.createTextNode(yongWangList[parseInt(Math.random()*yongWangList.length)]);
-			say.appendChild(newSay);
-			newSay.appendChild(nowSay);
-
-			let sayRemove = setTimeout(function(){
-				newSay.removeChild(nowSay);
-			}, 10000);
-		}
-
-		let buttonGO;
-
-		blindBT.onclick = function(){
-			if(!blindBTON){
-				blindBTON = true;
-				button40();
-				blindBT.style.backgroundColor = 'black';
-				blindBT.style.color = 'white';
-			}
-			else if (blindBTON){
-				blindBTON = false;
-				blindClear();
-				blindBT.style.backgroundColor = 'white';
-				blindBT.style.color = 'black';
-			}
-		};
-
-		function button40(){
-			buttonGO = setInterval(yongWangSay, 100);
-		}
-
-		function blindClear(){
-			clearInterval(buttonGO);
-		}
-
-		function bubble(){
-			const bb = document.createElement('div');
-			bb.className = 'bubble';
-			document.body.appendChild(bb);
-			randomX(bb);
-			waveAni(bb);
-
-			let bbRemove = setTimeout(function(){
-				bb.remove();
-			}, 10000);
-		}
-
-		var bubbleLoop = setInterval(bubble, 2500);
-
-		
-		let isMouseDown = false;
-
-		window.onmousedown = function(obj){
-			isMouseDown = true;
-			bubbleMini(obj);
-		};
-
-		window.onmouseup = function(){
-			isMouseDown = false;
-		};
-
-		window.onmousemove = function(obj){
-			if(isMouseDown){
-				bubbleMini(obj);
-			}
-		};
-
-		function bubbleMini(obj){
-			const bb = document.createElement('div');
-			bb.className = 'bubble-mini';
-			document.body.appendChild(bb);
-			bb.style.left=(obj.clientX-50)+'px';
-			bb.style.top=(obj.clientY-50)+'px';
-
-			let bbRemove = setTimeout(function(){
-				bb.remove();
-			}, 4000);
-		}
-
-		function waveAni(obj){
-			var leftPx = Math.round(Math.random());
-			var nowPx = parseInt(obj.style.left);
-			var nowHeight = (obj.style.top);
-
-			Ani(obj);
-
-			function Ani(){
-				nowPx += leftPx;
-				obj.style.left = nowPx + 'px';
-				var AniLoop = requestAnimationFrame(Ani);
-			}
-		}
-
-		/**
-		const cursor = document.getElementById('cursor');
-		var cursorX;
-		var cursorY;
-
-		window.onmousemove=function(obj){
-			cursorX = obj.clientX;
-			cursorY = obj.clientY;
-		}
-
-		cursorLoop();
-		function cursorLoop(){
-			
-			//cursor가 마우스를 따라간다.
-			var csNow = getComputedStyle(cursor);
-			//parseInt = 문자열을 떼어내고 숫자만 Int로 만듦
-			var csNX = parseInt(csNow.left); 
-			var csNY = parseInt(csNow.top);
-
-			cursor.style.left = csNX + (cursorX - csNX)/15 + 'px';
-			cursor.style.top = csNY + (cursorY - csNY)/15 + 'px';
-			//이 마우스 따라가기 예제에서
-			// /10값이 0이 될 때까지 (차이값이 0이 될 때까지)
-			//loop 여러번에 걸쳐서 cursor가 이동하게 된다.
-
-			//프레임마다 재귀 호출
-			var aniSession = window.requestAnimationFrame(cursorLoop);
-			//window.cancelAnimationFrame(aniSession);
-		}
-		*/
-
-	</script>
+	<script src='main.js'></script>
+	<script src='bubble.js'></script>
+	<script src='fish.js'></script>
 
 </body>
 </html>
